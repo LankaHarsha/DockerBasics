@@ -1,0 +1,23 @@
+db:
+    image: mongo
+    volumes:
+        - mongodbdata:/data/db
+    ports:
+        - "27017:27017"
+redis:
+    image: redis
+    volumes:
+        - redisdata:/data
+    ports:
+        - "6379:6379"
+meanapp:
+    build: .
+    links:
+        - db
+        - redis
+    volumes:
+        - .:/demo_base/demo
+    ports:
+        - "9000:9000"
+    restart: always
+        
