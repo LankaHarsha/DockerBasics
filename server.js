@@ -14,7 +14,7 @@ var flash = require('connect-flash');
 
 var configDB = require('./config/database.js');
 
-mongoose.connect(configDB.url, function(err) {
+mongoose.connect(process.env.MONGODB, function(err) {
     if (err) {
         console.log('Error ' + err);
     } else {

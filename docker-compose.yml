@@ -17,6 +17,9 @@ meanapp:
         - redis
     volumes:
         - .:/demo_base/demo
+    environment:
+        - MONGODB=mongodb://db/authentication
+        - REDIS_HOST=redis://redis:6379
     ports:
         - "9000:9000"
     restart: always
